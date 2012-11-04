@@ -1,8 +1,6 @@
 package br.com.igorribeirolima.fx.function;
 
-import br.com.igorribeirolima.fx.Expression;
-import br.com.igorribeirolima.fx.Fx;
-import br.com.igorribeirolima.fx.math.Math;
+import br.com.igorribeirolima.fx.api.Expression;
 import br.com.igorribeirolima.fx.operator.Operator;
 
 
@@ -13,7 +11,6 @@ class FunctionAND extends Expression {
   }
 
   public Double calculate(String expression) {
-    Fx fx = Math.fx();
     String expressionAND = "";
     String[] valores = Function.AND.takeOfFunctionName(expression).split(",");
     if (valores.length==1) return fx.calc(valores[0]).equals(1.0) ? 1.0 : 0.0;

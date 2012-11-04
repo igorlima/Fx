@@ -1,8 +1,6 @@
 package br.com.igorribeirolima.fx.function;
 
-import br.com.igorribeirolima.fx.Expression;
-import br.com.igorribeirolima.fx.Fx;
-import br.com.igorribeirolima.fx.math.Math;
+import br.com.igorribeirolima.fx.api.Expression;
 import br.com.igorribeirolima.fx.operator.Operator;
 
 
@@ -13,7 +11,6 @@ class FunctionOR extends Expression {
   }
 
   public Double calculate(String expression) {
-    Fx fx = Math.fx();
     String expressionOR = "";
     String[] valores = Function.OR.takeOfFunctionName(expression).split(",");
     for (String value : valores)

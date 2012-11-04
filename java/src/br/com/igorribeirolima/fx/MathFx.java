@@ -1,23 +1,28 @@
-package br.com.igorribeirolima.fx.math;
+package br.com.igorribeirolima.fx;
 
 import java.util.EmptyStackException;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import br.com.igorribeirolima.fx.Calculavel;
-import br.com.igorribeirolima.fx.Expression;
-import br.com.igorribeirolima.fx.Fx;
-import br.com.igorribeirolima.fx.Number;
+import br.com.igorribeirolima.fx.api.Calculavel;
+import br.com.igorribeirolima.fx.api.Expression;
+import br.com.igorribeirolima.fx.api.Fx;
 import br.com.igorribeirolima.fx.function.Function;
 import br.com.igorribeirolima.fx.operator.Operator;
+import br.com.igorribeirolima.fx.regex.RegexExpression;
+import br.com.igorribeirolima.fx.regex.RegexNumber;
 
 class MathFx implements Fx {
+  
+  static{
+    Expression.fx = new MathFx();
+  }
 
   protected Double calculateSimpleExpression(String expression) {
     
-    if (Pattern.matches(Expression.SIMPLE_EXPRESSION, expression)) {
-      Pattern pattern = Pattern.compile(Expression.OPERATORS);
+    if (Pattern.matches(RegexExpression.SIMPLE_EXPRESSION, expression)) {
+      Pattern pattern = Pattern.compile(RegexExpression.OPERATORS);
       Matcher matcher = pattern.matcher(expression);
       String symbol = null;
       while (matcher.find()) symbol = matcher.group(); //pegar o ultimo operador
@@ -53,7 +58,7 @@ class MathFx implements Fx {
   
   private String calculateExpressions(String expression) {
     
-    Pattern pattern = Pattern.compile("[(]"+Expression.GENERIC_EXPRESSION+ "[)]");
+    Pattern pattern = Pattern.compile("[(]"+RegexExpression.GENERIC_EXPRESSION+ "[)]");
     Matcher matcher = pattern.matcher(expression);
     
     while (matcher.find()) {
@@ -69,12 +74,12 @@ class MathFx implements Fx {
   protected Double calculateExpressionWithoutParentesis(String expression) {
     expression = ajustarInicioDeExpressao(expression);
     
-    if (!Pattern.matches(Expression.GENERIC_EXPRESSION, expression))
+    if (!Pattern.matches(RegexExpression.GENERIC_EXPRESSION, expression))
       throw new RuntimeException("Expressao invalida");
     
     //Manter ordem de PRECEDÊNCIA
     for (Operator operador : Operator.values()){
-      Pattern pattern = Pattern.compile("("+Expression.DIGIT+ ")(("+ operador.regex() +")("+Expression.DIGIT+"))");
+      Pattern pattern = Pattern.compile("("+RegexExpression.DIGIT+ ")(("+ operador.regex() +")("+RegexExpression.DIGIT+"))");
       Matcher matcher = pattern.matcher(expression);
       
       //Enquanto encontrar expressaoSimples, calcule-as e atualize expressao
@@ -194,7 +199,7 @@ class MathFx implements Fx {
     if (!hasParentesisOK(expressao, '(', ')')) return false;
     
     //Para fins de verificacao, caso haja incognitas, substitua por zero 
-    expressao = expressao.replaceAll(Number.INCOGNITAS, ""+0.0);
+    expressao = expressao.replaceAll(RegexNumber.INCOGNITAS, ""+0.0);
     //Remover todos os espacos em branco
     expressao = clearBlanckSpace(expressao);
     
@@ -206,7 +211,7 @@ class MathFx implements Fx {
       return false;
     }
     
-    return Pattern.matches(Expression.GENERIC_EXPRESSION, expressao) ? true : false;
+    return Pattern.matches(RegexExpression.GENERIC_EXPRESSION, expressao) ? true : false;
     
   }
   

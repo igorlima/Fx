@@ -1,4 +1,5 @@
-package br.com.igorribeirolima.fx;
+package br.com.igorribeirolima.fx.api;
+
 
 
 public interface Calculavel {

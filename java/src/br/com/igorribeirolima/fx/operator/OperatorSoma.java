@@ -1,12 +1,12 @@
 package br.com.igorribeirolima.fx.operator;
 
-import br.com.igorribeirolima.fx.Expression;
-import br.com.igorribeirolima.fx.Number;
+import br.com.igorribeirolima.fx.api.Expression;
+import br.com.igorribeirolima.fx.regex.RegexNumber;
 
 
 class OperatorSoma extends Expression {
   
-  private static final String EXPRESSAO = "("+Number.REAL_NUMBER+ ")(("+Operator.SOMA.regex()+")("+Number.REAL_NUMBER+"))";
+  private static final String EXPRESSAO = "("+RegexNumber.REAL_NUMBER+ ")(("+Operator.SOMA.regex()+")("+RegexNumber.REAL_NUMBER+"))";
   
   OperatorSoma(){
     super(EXPRESSAO);

@@ -1,8 +1,8 @@
-package br.com.igorribeirolima.fx;
+package br.com.igorribeirolima.fx.regex;
 
 import java.util.regex.Pattern;
 
-public class Number {
+public class RegexNumber {
   
   public static final String NOTACAO_CIENTIFICA = "(E\\-?[0-9]+)?"; //1.4210854715202004E-14
   public static final String BRAZILIAN_NUMBER_WITHOUT_DECIMAL_PLACES = "(\\-|\\+)?[0-9]+(\\,[0-9]+)?"+NOTACAO_CIENTIFICA;

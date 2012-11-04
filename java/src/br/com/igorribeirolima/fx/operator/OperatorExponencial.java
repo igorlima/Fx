@@ -1,12 +1,12 @@
 package br.com.igorribeirolima.fx.operator;
 
-import br.com.igorribeirolima.fx.Expression;
-import br.com.igorribeirolima.fx.Number;
+import br.com.igorribeirolima.fx.api.Expression;
+import br.com.igorribeirolima.fx.regex.RegexNumber;
 
 
 class OperatorExponencial extends Expression {
   
-  private static final String EXPRESSAO = "("+Number.REAL_NUMBER+ ")(("+Operator.EXP.regex()+")("+Number.REAL_NUMBER+"))";
+  private static final String EXPRESSAO = "("+RegexNumber.REAL_NUMBER+ ")(("+Operator.EXP.regex()+")("+RegexNumber.REAL_NUMBER+"))";
   
   OperatorExponencial() {
     super(EXPRESSAO);

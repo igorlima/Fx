@@ -3,8 +3,8 @@ package br.com.igorribeirolima.fx.operator;
 import java.util.HashMap;
 import java.util.Map;
 
-import br.com.igorribeirolima.fx.Calculavel;
-import br.com.igorribeirolima.fx.Expression;
+import br.com.igorribeirolima.fx.api.Calculavel;
+import br.com.igorribeirolima.fx.api.Expression;
 
 public enum Operator implements Calculavel {
   
@@ -82,5 +82,6 @@ public enum Operator implements Calculavel {
     
     return map.get(symbol);
   }
+  
   
 }

@@ -5,8 +5,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 import br.com.igorribeirolima.fx.FxTest;
+import br.com.igorribeirolima.fx.MathFxTest;
 import br.com.igorribeirolima.fx.function.FunctionTest;
-import br.com.igorribeirolima.fx.math.MathFxTest;
 import br.com.igorribeirolima.fx.operator.OperatorTest;
 
 @RunWith(Suite.class)

@@ -1,8 +1,6 @@
 package br.com.igorribeirolima.fx.function;
 
-import br.com.igorribeirolima.fx.Expression;
-import br.com.igorribeirolima.fx.Fx;
-import br.com.igorribeirolima.fx.math.Math;
+import br.com.igorribeirolima.fx.api.Expression;
 
 
 class FunctionIF extends Expression {
@@ -12,7 +10,6 @@ class FunctionIF extends Expression {
   }
 
   public Double calculate(String expression) {
-    Fx fx = Math.fx();
     String[] valores = Function.IF.takeOfFunctionName(expression).split(",");
     
     if (fx.calc(valores[0]).equals(1.0))

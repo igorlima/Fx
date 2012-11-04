@@ -3,15 +3,16 @@ package br.com.igorribeirolima.fx.function;
 import java.util.HashMap;
 import java.util.Map;
 
-import br.com.igorribeirolima.fx.Calculavel;
-import br.com.igorribeirolima.fx.Expression;
+import br.com.igorribeirolima.fx.api.Calculavel;
+import br.com.igorribeirolima.fx.api.Expression;
+import br.com.igorribeirolima.fx.regex.RegexExpression;
 
 public enum Function implements Calculavel {
   
-  IF  (FunctionIF.class , "IF" , "[I][F][(]"    + Expression.GENERIC_EXPRESSION + "[,]" + Expression.GENERIC_EXPRESSION + "[,]" + Expression.GENERIC_EXPRESSION + "[)]" ),
-  AND (FunctionAND.class, "AND", "[A][N][D][(]" + Expression.GENERIC_EXPRESSION +"([,]" + Expression.GENERIC_EXPRESSION + ")*[)]" ),
-  OR  (FunctionOR.class,  "OR" , "[O][R][(]"    + Expression.GENERIC_EXPRESSION +"([,]" + Expression.GENERIC_EXPRESSION + ")*[)]"  ),
-  NOT (FunctionNOT.class, "NOT", "[N][O][T][(]" + Expression.GENERIC_EXPRESSION + "[)]" )
+  IF  (FunctionIF.class , "IF" , "[I][F][(]"    + RegexExpression.GENERIC_EXPRESSION + "[,]" + RegexExpression.GENERIC_EXPRESSION + "[,]" + RegexExpression.GENERIC_EXPRESSION + "[)]" ),
+  AND (FunctionAND.class, "AND", "[A][N][D][(]" + RegexExpression.GENERIC_EXPRESSION +"([,]" + RegexExpression.GENERIC_EXPRESSION + ")*[)]" ),
+  OR  (FunctionOR.class,  "OR" , "[O][R][(]"    + RegexExpression.GENERIC_EXPRESSION +"([,]" + RegexExpression.GENERIC_EXPRESSION + ")*[)]"  ),
+  NOT (FunctionNOT.class, "NOT", "[N][O][T][(]" + RegexExpression.GENERIC_EXPRESSION + "[)]" )
   ;
   
   private static final Map<String,Calculavel> map = new HashMap<String, Calculavel>();

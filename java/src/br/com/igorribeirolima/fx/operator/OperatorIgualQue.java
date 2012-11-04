@@ -1,11 +1,12 @@
 package br.com.igorribeirolima.fx.operator;
 
-import br.com.igorribeirolima.fx.Expression;
+import br.com.igorribeirolima.fx.api.Expression;
+import br.com.igorribeirolima.fx.regex.RegexExpression;
 
 
 class OperatorIgualQue extends Expression {
   
-  private static final String EXPRESSAO = "("+Expression.DIGIT+ ")(("+Operator.IGUAL_QUE.regex()+")("+Expression.DIGIT+"))";
+  private static final String EXPRESSAO = "("+RegexExpression.DIGIT+ ")(("+Operator.IGUAL_QUE.regex()+")("+RegexExpression.DIGIT+"))";
   
   OperatorIgualQue() {
     super(EXPRESSAO);
@@ -14,8 +15,8 @@ class OperatorIgualQue extends Expression {
   public Double calculate(String expressao) {
     String[] valores = expressao.split(Operator.IGUAL_QUE.regex());
     
-    Object firstSentence = convertDigitToObject(valores[0]);
-    Object secondSentence = convertDigitToObject(valores[1]);
+    Object firstSentence = RegexExpression.convertDigitToObject(valores[0]);
+    Object secondSentence = RegexExpression.convertDigitToObject(valores[1]);
     
     if (firstSentence.equals(secondSentence))
       return 1.0;
