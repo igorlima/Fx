@@ -1,8 +1,6 @@
 package br.com.igorribeirolima.fx.api;
 
 
-
-
 public interface Calculavel {
   
   String symbol();

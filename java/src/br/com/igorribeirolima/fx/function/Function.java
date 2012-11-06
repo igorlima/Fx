@@ -5,34 +5,33 @@ import java.util.Map;
 
 import br.com.igorribeirolima.fx.api.Calculavel;
 import br.com.igorribeirolima.fx.api.Expression;
-import br.com.igorribeirolima.fx.regex.RegexExpression;
+import br.com.igorribeirolima.fx.api.RegexEnum;
+import br.com.igorribeirolima.fx.regex.RegexFunction;
 
 public enum Function implements Calculavel {
   
-  IF  (FunctionIF.class , "IF" , "[I][F][(]"    + RegexExpression.GENERIC_EXPRESSION + "[,]" + RegexExpression.GENERIC_EXPRESSION + "[,]" + RegexExpression.GENERIC_EXPRESSION + "[)]" ),
-  AND (FunctionAND.class, "AND", "[A][N][D][(]" + RegexExpression.GENERIC_EXPRESSION +"([,]" + RegexExpression.GENERIC_EXPRESSION + ")*[)]" ),
-  OR  (FunctionOR.class,  "OR" , "[O][R][(]"    + RegexExpression.GENERIC_EXPRESSION +"([,]" + RegexExpression.GENERIC_EXPRESSION + ")*[)]"  ),
-  NOT (FunctionNOT.class, "NOT", "[N][O][T][(]" + RegexExpression.GENERIC_EXPRESSION + "[)]" ),
-  HourToNumber (FunctionHourToNumber.class, "HourToNumber", "[H][o][u][r][T][o][N][u][m][b][e][r][(]" + RegexExpression.GENERIC_EXPRESSION + "[)]" )
+  IF  (RegexFunction.IF,  FunctionIF.class),
+  AND (RegexFunction.AND, FunctionAND.class),
+  OR  (RegexFunction.OR,  FunctionOR.class),
+  NOT (RegexFunction.NOT, FunctionNOT.class),
+  HourToNumber (RegexFunction.HourToNumber, FunctionHourToNumber.class)
   ;
   
   private static final Map<String,Calculavel> map = new HashMap<String, Calculavel>();
-  private final String symbol;
-  private final String regex;
+  private final RegexEnum regex;
   private final Class<?> className;
   private Expression simpleExpression;
-  private Function(Class<?> className, String symbol, String regex) {
-    this.symbol = symbol;
+  private Function(RegexEnum regex, Class<?> className) {
     this.regex = regex;
     this.className = className;
   }
   
   public String symbol() {
-    return this.symbol;
+    return this.regex.symbol();
   }
   
   public String regex() {
-    return this.regex;
+    return this.regex.regex();
   }
   
   public Expression expression() {
@@ -56,14 +55,6 @@ public enum Function implements Calculavel {
   
   public String takeOfFunctionName(String expression) {
     return expression.replaceAll(symbol()+"[(]", "").replaceAll("[)]", "" );
-  }
-  
-  public static String regexFunctions() {
-    String regex = "";
-    for (Function funcao : Function.values())
-      regex += regex.isEmpty() ? "("+funcao.regex()+")" : "|(" + funcao.regex() + ")";
-    
-    return regex;
   }
   
   public static Calculavel get(String symbol) {

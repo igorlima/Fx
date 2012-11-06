@@ -5,6 +5,7 @@ import java.util.Map;
 
 import br.com.igorribeirolima.fx.api.Calculavel;
 import br.com.igorribeirolima.fx.api.Expression;
+import br.com.igorribeirolima.fx.api.RegexEnum;
 import br.com.igorribeirolima.fx.regex.RegexOperator;
 
 public enum Operator implements Calculavel {
@@ -27,10 +28,10 @@ public enum Operator implements Calculavel {
   
   private static final Map<String,Calculavel> map = new HashMap<String, Calculavel>();
   private final Class<?> className;
-  private final RegexOperator regex;
+  private final RegexEnum regex;
   private Expression expressaoSimples;
 
-  private Operator(RegexOperator regex, Class<?> className) {
+  private Operator(RegexEnum regex, Class<?> className) {
 	this.regex = regex;
     this.className = className;
   }

@@ -10,6 +10,7 @@ import br.com.igorribeirolima.fx.api.Fx;
 import br.com.igorribeirolima.fx.function.Function;
 import br.com.igorribeirolima.fx.operator.Operator;
 import br.com.igorribeirolima.fx.regex.RegexExpression;
+import br.com.igorribeirolima.fx.regex.RegexFunction;
 import br.com.igorribeirolima.fx.regex.RegexNumber;
 
 public class MathZ {
@@ -42,7 +43,7 @@ class MathFx implements Fx {
   }
   
   private String calculateSimpleFuncions(String expression) {
-    Pattern pattern = Pattern.compile(Function.regexFunctions());
+    Pattern pattern = Pattern.compile(RegexFunction.regexFunctions());
     Matcher matcher = pattern.matcher(expression);
     
     while (matcher.find()) {

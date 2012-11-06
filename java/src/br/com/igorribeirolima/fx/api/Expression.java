@@ -2,6 +2,7 @@ package br.com.igorribeirolima.fx.api;
 
 import java.util.regex.Pattern;
 
+
 public abstract class Expression {
   
   public static Fx fx;
@@ -18,4 +19,3 @@ public abstract class Expression {
   }
   
 }
-
