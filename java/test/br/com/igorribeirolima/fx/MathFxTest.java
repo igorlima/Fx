@@ -3,8 +3,6 @@ package br.com.igorribeirolima.fx;
 import org.junit.Assert;
 import org.junit.Test;
 
-import br.com.igorribeirolima.fx.MathFx;
-
 public class MathFxTest {
   
   private MathFx fx = new MathFx();

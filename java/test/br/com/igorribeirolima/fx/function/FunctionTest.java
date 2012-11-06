@@ -48,4 +48,13 @@ public class FunctionTest {
     Assert.assertEquals( 0.0, function.calculate("NOT(1+1+1+1+1)"), 0.0001 );
   }
   
+  @Test
+  public void testeFuncaoHourToNumber() {
+    FunctionHourToNumber function = new FunctionHourToNumber();
+    Assert.assertEquals( 10.1666, function.calculate("HourToNumber(10:10)"), 0.0001 );
+    Assert.assertEquals( 09.1500, function.calculate("HourToNumber(09:09)"), 0.0001 );
+    Assert.assertEquals( 10.1694, function.calculate("HourToNumber(10:10:10)"), 0.0001 );
+    Assert.assertEquals( 09.1525, function.calculate("HourToNumber(09:09:09)"), 0.0001 );
+  }
+  
 }

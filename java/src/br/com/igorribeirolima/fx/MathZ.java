@@ -6,19 +6,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import br.com.igorribeirolima.fx.api.Calculavel;
-import br.com.igorribeirolima.fx.api.Expression;
 import br.com.igorribeirolima.fx.api.Fx;
 import br.com.igorribeirolima.fx.function.Function;
 import br.com.igorribeirolima.fx.operator.Operator;
 import br.com.igorribeirolima.fx.regex.RegexExpression;
 import br.com.igorribeirolima.fx.regex.RegexNumber;
 
-class MathFx implements Fx {
-  
-  static{
-    Expression.fx = new MathFx();
-  }
+public class MathZ {
+  public final static Fx fx = new MathFx();
+}
 
+class MathFx implements Fx {
+	  
   protected Double calculateSimpleExpression(String expression) {
     
     if (Pattern.matches(RegexExpression.SIMPLE_EXPRESSION, expression)) {

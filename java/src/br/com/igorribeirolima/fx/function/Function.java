@@ -12,7 +12,8 @@ public enum Function implements Calculavel {
   IF  (FunctionIF.class , "IF" , "[I][F][(]"    + RegexExpression.GENERIC_EXPRESSION + "[,]" + RegexExpression.GENERIC_EXPRESSION + "[,]" + RegexExpression.GENERIC_EXPRESSION + "[)]" ),
   AND (FunctionAND.class, "AND", "[A][N][D][(]" + RegexExpression.GENERIC_EXPRESSION +"([,]" + RegexExpression.GENERIC_EXPRESSION + ")*[)]" ),
   OR  (FunctionOR.class,  "OR" , "[O][R][(]"    + RegexExpression.GENERIC_EXPRESSION +"([,]" + RegexExpression.GENERIC_EXPRESSION + ")*[)]"  ),
-  NOT (FunctionNOT.class, "NOT", "[N][O][T][(]" + RegexExpression.GENERIC_EXPRESSION + "[)]" )
+  NOT (FunctionNOT.class, "NOT", "[N][O][T][(]" + RegexExpression.GENERIC_EXPRESSION + "[)]" ),
+  HourToNumber (FunctionHourToNumber.class, "HourToNumber", "[H][o][u][r][T][o][N][u][m][b][e][r][(]" + RegexExpression.GENERIC_EXPRESSION + "[)]" )
   ;
   
   private static final Map<String,Calculavel> map = new HashMap<String, Calculavel>();

@@ -2,11 +2,9 @@ package br.com.igorribeirolima.fx.regex;
 
 import java.util.regex.Pattern;
 
-import br.com.igorribeirolima.fx.operator.Operator;
-
 public class RegexExpression {
   
-  public static final String OPERATORS = Operator.regexOperators();
+  public static final String OPERATORS = RegexOperator.regexOperators();
   public static final String CARACTER = "[a-zA-Z0-9_ãáàâêéíõóúüç ]";
   public static final String WORD = "([\"]("+CARACTER+"+)[\"])";
   public static final String DIGIT = "("+RegexNumber.DIGIT+"|"+WORD+")";

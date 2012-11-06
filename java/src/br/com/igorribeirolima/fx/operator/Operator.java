@@ -5,43 +5,44 @@ import java.util.Map;
 
 import br.com.igorribeirolima.fx.api.Calculavel;
 import br.com.igorribeirolima.fx.api.Expression;
+import br.com.igorribeirolima.fx.regex.RegexOperator;
 
 public enum Operator implements Calculavel {
   
   //Manter ordem de PRECEDÊNCIA
-  EXP           ("^" , "\\^",    OperatorExponencial.class   ),
-  MULTIPACACAO  ("*" , "\\*",    OperatorMultiplicacao.class ),
-  DIVISAO       ("/" , "\\/",    OperatorDivisao.class       ),
-  SOMA          ("+" , "\\+",    OperatorSoma.class          ),
-  SUBTRACAO     ("-" , "\\-",    OperatorSubtracao.class     ),
-  IGUAL_QUE     ("==", "\\=\\=", OperatorIgualQue.class      ),
-  DIFERENTE_DE  ("<>", "\\<\\>", OperatorDiferenteDe.class   ),
-  MENOR_IGUAL   ("<=", "\\<\\=", OperatorMenorIgual.class    ),
-  MAIOR_IGUAL   (">=", "\\>\\=", OperatorMaiorIgual.class    ),
-  MAIOR_QUE     (">" , "\\>",    OperatorMaiorQue.class      ),
-  MENOR_QUE     ("<" , "\\<",    OperatorMenorQue.class      ),
-  AND           ("&&", "\\&\\&", OperatorAND.class           ),
-  OR            ("||", "\\|\\|", OperatorOR.class            )
+  EXP           (RegexOperator.EXP,           OperatorExponencial.class   ),
+  MULTIPACACAO  (RegexOperator.MULTIPACACAO,  OperatorMultiplicacao.class ),
+  DIVISAO       (RegexOperator.DIVISAO,       OperatorDivisao.class       ),
+  SOMA          (RegexOperator.SOMA,          OperatorSoma.class          ),
+  SUBTRACAO     (RegexOperator.SUBTRACAO,     OperatorSubtracao.class     ),
+  IGUAL_QUE     (RegexOperator.IGUAL_QUE,     OperatorIgualQue.class      ),
+  DIFERENTE_DE  (RegexOperator.DIFERENTE_DE,  OperatorDiferenteDe.class   ),
+  MENOR_IGUAL   (RegexOperator.MENOR_IGUAL,   OperatorMenorIgual.class    ),
+  MAIOR_IGUAL   (RegexOperator.MAIOR_IGUAL,   OperatorMaiorIgual.class    ),
+  MAIOR_QUE     (RegexOperator.MAIOR_QUE,     OperatorMaiorQue.class      ),
+  MENOR_QUE     (RegexOperator.MENOR_QUE,     OperatorMenorQue.class      ),
+  AND           (RegexOperator.AND,           OperatorAND.class           ),
+  OR            (RegexOperator.OR,            OperatorOR.class            )
   ;
   
   private static final Map<String,Calculavel> map = new HashMap<String, Calculavel>();
-  private final String symbol;
-  private final String regex;
   private final Class<?> className;
+  private final RegexOperator regex;
   private Expression expressaoSimples;
 
-  private Operator(String symbol, String regex, Class<?> className) {
-    this.symbol = symbol;
-    this.regex = regex;
+  private Operator(RegexOperator regex, Class<?> className) {
+	this.regex = regex;
     this.className = className;
   }
   
+  @Override
   public String symbol() {
-    return this.symbol;
+  	return regex.symbol();
   }
   
+  @Override
   public String regex() {
-    return this.regex;
+  	return regex.regex();
   }
   
   public Expression expression() {
@@ -63,18 +64,6 @@ public enum Operator implements Calculavel {
     return this.expression().isValid(expressao);
   }
   
-  /**
-   * operadores +, -, \, *, ^
-   * @return
-   */
-  public static String regexOperators() {
-    String regex = "";
-    for (Operator operador : Operator.values())
-      regex += regex.isEmpty() ? operador.regex() : "|" + operador.regex();
-    
-    return regex;
-  }
-  
   public static Calculavel get(String symbol) {
     if (map.isEmpty())
       for (Operator operador : Operator.values()) 
@@ -82,6 +71,5 @@ public enum Operator implements Calculavel {
     
     return map.get(symbol);
   }
-  
-  
+
 }

@@ -1,13 +1,12 @@
-package br.com.igorribeirolima.fx;
+package br.com.igorribeirolima.fx.regex;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import br.com.igorribeirolima.fx.operator.Operator;
 import br.com.igorribeirolima.fx.regex.RegexExpression;
 import br.com.igorribeirolima.fx.regex.RegexNumber;
 
-public class FxTest {
+public class RegexTest {
   
   @Test
   public void testeParaVerificarRegexDosOperadores() {
@@ -24,7 +23,7 @@ public class FxTest {
         "\\<|" +
         "\\&\\&|" +
         "\\|\\|";
-    Assert.assertEquals( "Regex de operadores inválida", regexOperadores, Operator.regexOperators() );
+    Assert.assertEquals( "Regex de operadores inválida", regexOperadores, RegexOperator.regexOperators() );
   }
   
   @Test
