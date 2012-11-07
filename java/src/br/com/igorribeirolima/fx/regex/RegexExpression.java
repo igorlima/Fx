@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class RegexExpression {
   
   public static final String OPERATORS = RegexOperator.regexOperators();
-  public static final String CARACTER = "[a-zA-Z0-9_ãáàâêéíõóúüç ]";
+  public static final String CARACTER = "[a-zA-Z0-9_ãáàâêéíõóúüç :]";
   public static final String WORD = "([\"]("+CARACTER+"+)[\"])";
   public static final String DIGIT = "("+RegexNumber.DIGIT+"|"+WORD+")";
   public static final String SIMPLE_EXPRESSION = "("+DIGIT+ ")(("+ OPERATORS +")("+DIGIT+"))"; //suporta apenas a operacao entre dois numeros

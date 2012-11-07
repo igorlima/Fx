@@ -71,4 +71,12 @@ public class ExpressionTest {
 	Double value = fx.calc("IF(OR(\"GD2\"==\"SF6\",\"GD2\"==\"SF7\",\"GD2\"==\"SF8\",\"GD2\"==\"SF9\",\"GD2\"==\"SF10\", \"GD2\"==\"JQ1\", \"GD2\"==\"JQ2\", \"GD2\"==\"JQ3\", \"GD2\"==\"PA1\", \"GD2\"==\"MU1\", \"Rio Grande\"==\"Jucuruçu\", \"Rio Grande\"==\"Rio Alcobaça ou Itanhém\"), 1 <= 0.5, 1 <= 1 )");
 	Assert.assertEquals(1.0, value, 0.0001);
   }
+  
+  @Test
+  public void testeParaVerificarUmaExpressaoComHoraDeRegraDeModoDeUso() {
+	  Fx fx = new MathExpression();
+	  Assert.assertEquals(6.0, fx.calc("IF( HourToNumber(\"10:10\")<20, 2*3, 4*5 )"), 0.0001);
+	  Assert.assertEquals(28.0, fx.calc("IF( HourToNumber(\"10:10\")>20, 2*3, 4*7 )"), 0.0001);
+  }
+  
 }

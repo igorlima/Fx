@@ -9,6 +9,7 @@ class FunctionHourToNumber extends Expression {
   }
 
   public Double calculate(String expression) {
+    expression = expression.replaceAll("\"", "");
     String[] valores = Function.HourToNumber.takeOfFunctionName(expression).split(":");
     Double result = 0.0;
     int expoente = 0;
@@ -20,3 +21,4 @@ class FunctionHourToNumber extends Expression {
   }
 
 }
+
