@@ -15,7 +15,7 @@ class UtilExpression {
    * @param expressao
    * @return
    */
-  protected String clearBlanckSpace( String expressao ) {
+  protected static String clearBlanckSpace( String expressao ) {
     expressao = expressao.replace( "\n", "" );
     
     boolean betweenParentesis = false;
@@ -30,7 +30,7 @@ class UtilExpression {
     return strCleaning;
   }
   
-  public String getExpressionBetweenParentesis( String expressao ) {
+  public static String getExpressionBetweenParentesis( String expressao ) {
     int indexAbreParentese = expressao.lastIndexOf( '(' )+1;
     int indexFechaParentese = expressao.indexOf( ')', expressao.lastIndexOf( '(' ) );
     return expressao.substring(indexAbreParentese, indexFechaParentese);
@@ -43,7 +43,7 @@ class UtilExpression {
    * @param charFecha
    * @return
    */
-  public boolean hasParentesisOK( String expressao, Character charAbre, Character charFecha ){
+  public static boolean hasParentesisOK( String expressao, Character charAbre, Character charFecha ){
     Stack<Character> pilha = new Stack<Character>();
     
     Pattern pattern = Pattern.compile("(\\"+charAbre+"|\\"+charFecha+")");
@@ -77,7 +77,7 @@ class UtilExpression {
    * @param expressao string da expressao que deseja verificar se eh valida
    * @return
    */
-  public boolean isValid(String expressao) {
+  public static boolean isValid(String expressao) {
     
     //verificar se os parenteses da expressao estao corretos
     if (!hasParentesisOK(expressao, '(', ')')) return false;

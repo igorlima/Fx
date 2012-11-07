@@ -4,7 +4,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import br.com.igorribeirolima.fx.api.CalculavelFactory;
-import br.com.igorribeirolima.fx.api.Expression;
 import br.com.igorribeirolima.fx.api.Fx;
 import br.com.igorribeirolima.fx.factory.FxFactory;
 import br.com.igorribeirolima.fx.regex.RegexFunction;
@@ -12,16 +11,18 @@ import br.com.igorribeirolima.fx.regex.RegexFunction;
 class FunctionExpression implements Fx {
   
   private CalculavelFactory factory = new FxFactory();
+  private ManyExpression manyExpression = new ManyExpression();
   protected final static String REGEX = RegexFunction.regexFunctions();
+  protected final static Pattern pattern = Pattern.compile(FunctionExpression.REGEX);
 
   @Override
   public Double calc(String expression) {
     expression = calculateFuncions(expression);
-    return Expression.fx.calc(expression);
+    return manyExpression.calc(expression);
   }
   
   private String calculateFuncions(String expression) {
-    Pattern pattern = Pattern.compile(FunctionExpression.REGEX);
+    
     Matcher matcher = pattern.matcher(expression);
     
     while (matcher.find()) {

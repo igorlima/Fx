@@ -34,8 +34,7 @@ public class ExpressionTest {
   
   @Test
   public void testeParaVerificarALimpezaDeEspacosEmBranco() {
-    UtilExpression util = new UtilExpression();
-	String strCleaning = util.clearBlanckSpace("\"Rio Grande\"  ==  \"Jucuruçu\",    \"Rio Grande\"==\"Rio Alcobaça ou Itanhém\"");
+	String strCleaning = UtilExpression.clearBlanckSpace("\"Rio Grande\"  ==  \"Jucuruçu\",    \"Rio Grande\"==\"Rio Alcobaça ou Itanhém\"");
 	Assert.assertEquals("\"Rio Grande\"==\"Jucuruçu\",\"Rio Grande\"==\"Rio Alcobaça ou Itanhém\"", strCleaning);
   }
 
@@ -59,7 +58,7 @@ public class ExpressionTest {
 
   @Test
   public void testeParaVerificarCalculoDeFuncaoDentroDeFuncao() {
-    Fx fx = new FunctionExpression();
+    Fx fx = new MathExpression();
 	Assert.assertEquals( 1.0, fx.calc("IF(AND(1,1,1,1),1,0)"), 0.0001 );
 	Assert.assertEquals( 1.0, fx.calc("IF(AND((1+1^2(1))<>0,1,1,1),1,0)"), 0.0001 );
 	Assert.assertEquals( 1.0, fx.calc("AND(\"GD2\"==\"GD2\")"), 0.0001 );
@@ -68,7 +67,7 @@ public class ExpressionTest {
 
   @Test
   public void testeParaVerificarUmaExpressaoDeRegraDeModoDeUso() {
-    Fx fx = new FunctionExpression();
+    Fx fx = new MathExpression();
 	Double value = fx.calc("IF(OR(\"GD2\"==\"SF6\",\"GD2\"==\"SF7\",\"GD2\"==\"SF8\",\"GD2\"==\"SF9\",\"GD2\"==\"SF10\", \"GD2\"==\"JQ1\", \"GD2\"==\"JQ2\", \"GD2\"==\"JQ3\", \"GD2\"==\"PA1\", \"GD2\"==\"MU1\", \"Rio Grande\"==\"Jucuruçu\", \"Rio Grande\"==\"Rio Alcobaça ou Itanhém\"), 1 <= 0.5, 1 <= 1 )");
 	Assert.assertEquals(1.0, value, 0.0001);
   }
