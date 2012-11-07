@@ -1,4 +1,4 @@
-package br.com.igorribeirolima.fx;
+package br.com.igorribeirolima.fx.expression;
 
 import java.util.EmptyStackException;
 import java.util.Stack;
@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 import br.com.igorribeirolima.fx.regex.RegexExpression;
 import br.com.igorribeirolima.fx.regex.RegexNumber;
 
-public class Util {
+class UtilExpression {
   
   /**
    * Os espaços entre parenteses não serão excluídos

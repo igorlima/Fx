@@ -12,6 +12,7 @@ import br.com.igorribeirolima.fx.regex.RegexFunction;
 class FunctionExpression implements Fx {
   
   private CalculavelFactory factory = new FxFactory();
+  protected final static String REGEX = RegexFunction.regexFunctions();
 
   @Override
   public Double calc(String expression) {
@@ -20,7 +21,7 @@ class FunctionExpression implements Fx {
   }
   
   private String calculateFuncions(String expression) {
-    Pattern pattern = Pattern.compile(RegexFunction.regexFunctions());
+    Pattern pattern = Pattern.compile(FunctionExpression.REGEX);
     Matcher matcher = pattern.matcher(expression);
     
     while (matcher.find()) {

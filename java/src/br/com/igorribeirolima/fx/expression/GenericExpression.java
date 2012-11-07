@@ -9,6 +9,7 @@ import br.com.igorribeirolima.fx.regex.RegexExpression;
 class GenericExpression implements Fx {
   
   private ManyExpression manyExpression = new ManyExpression();
+  protected final static String REGEX = "[(]"+RegexExpression.GENERIC_EXPRESSION+ "[)]";
   
   public Double calc(String expression) {
     return manyExpression.calc( calculateExpressions(expression) );
@@ -16,7 +17,7 @@ class GenericExpression implements Fx {
   
   protected String calculateExpressions(String expression) {
     
-    Pattern pattern = Pattern.compile("[(]"+RegexExpression.GENERIC_EXPRESSION+ "[)]");
+    Pattern pattern = Pattern.compile(GenericExpression.REGEX);
     Matcher matcher = pattern.matcher(expression);
     
     while (matcher.find()) {
