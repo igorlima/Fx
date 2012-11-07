@@ -1,8 +1,5 @@
 package br.com.igorribeirolima.fx.function;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import br.com.igorribeirolima.fx.api.Calculavel;
 import br.com.igorribeirolima.fx.api.Expression;
 import br.com.igorribeirolima.fx.api.RegexEnum;
@@ -17,7 +14,6 @@ public enum Function implements Calculavel {
   HourToNumber (RegexFunction.HourToNumber, FunctionHourToNumber.class)
   ;
   
-  private static final Map<String,Calculavel> map = new HashMap<String, Calculavel>();
   private final RegexEnum regex;
   private final Class<?> className;
   private Expression simpleExpression;
@@ -55,14 +51,6 @@ public enum Function implements Calculavel {
   
   public String takeOfFunctionName(String expression) {
     return expression.replaceAll(symbol()+"[(]", "").replaceAll("[)]", "" );
-  }
-  
-  public static Calculavel get(String symbol) {
-    if (map.isEmpty())
-      for (Function funcao : Function.values()) 
-        map.put(funcao.symbol(), funcao);
-    
-    return map.get(symbol);
   }
   
 }

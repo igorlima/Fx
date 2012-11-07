@@ -1,8 +1,5 @@
 package br.com.igorribeirolima.fx.operator;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import br.com.igorribeirolima.fx.api.Calculavel;
 import br.com.igorribeirolima.fx.api.Expression;
 import br.com.igorribeirolima.fx.api.RegexEnum;
@@ -26,7 +23,6 @@ public enum Operator implements Calculavel {
   OR            (RegexOperator.OR,            OperatorOR.class            )
   ;
   
-  private static final Map<String,Calculavel> map = new HashMap<String, Calculavel>();
   private final Class<?> className;
   private final RegexEnum regex;
   private Expression expressaoSimples;
@@ -65,12 +61,4 @@ public enum Operator implements Calculavel {
     return this.expression().isValid(expressao);
   }
   
-  public static Calculavel get(String symbol) {
-    if (map.isEmpty())
-      for (Operator operador : Operator.values()) 
-        map.put(operador.symbol(), operador);
-    
-    return map.get(symbol);
-  }
-
 }
