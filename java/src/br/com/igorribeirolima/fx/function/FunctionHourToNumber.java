@@ -1,8 +1,6 @@
 package br.com.igorribeirolima.fx.function;
 
 import br.com.igorribeirolima.fx.api.Expression;
-import br.com.igorribeirolima.fx.operator.Operator;
-
 
 class FunctionHourToNumber extends Expression {
   
@@ -11,13 +9,13 @@ class FunctionHourToNumber extends Expression {
   }
 
   public Double calculate(String expression) {
-    String expressionOR = "";
     String[] valores = Function.HourToNumber.takeOfFunctionName(expression).split(":");
     Double result = 0.0;
+    int expoente = 0;
     for (String value : valores)
-      expressionOR += expressionOR.isEmpty() ? fx.calc(value) : Operator.OR.symbol() + fx.calc(value); 
+      result+=Double.parseDouble(value)/Math.pow(60, expoente++);
     
-    return fx.calc(expressionOR);
+    return result;
     
   }
 
